@@ -17,8 +17,8 @@ export default function Routes() {
             <Login />
         </Route>
         <Route exact path="/Signup">
-  <SignUp />
-</Route>
+        <SignUp />
+        </Route>
         <NotFound />
     </Switch>
   );

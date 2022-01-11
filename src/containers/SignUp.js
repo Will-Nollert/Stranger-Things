@@ -11,8 +11,29 @@ export default function SignUp() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+  
+    try {
+     const response = await fetch(`https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/register`
+     ,{
+       method: 'POST',
+       headers: {
+         'Content-Type': 'application/json'
+       },
+       body: JSON.stringify({
+         user: {
+           username: email,
+           password: password
+         }
+       })});
+       const { data } = await response.json()
+       localStorage.setItem(`stAuth`, JSON.stringify(data.token))
+       console.log(data.token)
+      alert("Logged in");
+    } catch (e) {
+      alert(e.message);
+    }
   }
 
   return (
