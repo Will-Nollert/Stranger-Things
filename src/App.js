@@ -5,7 +5,7 @@ import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
-localStorage.getItem(`stAuth`)
+
 
 
 
@@ -18,16 +18,19 @@ function App() {
   const [isAuthenticating, setIsAuthenticating] = useState(true);
 
   useEffect(() => {
+    setIsAuthenticating(false);
     onLoad();
   }, []);
   
   async function onLoad() {
+    localStorage.getItem(`stAuth`)
+
     try {
        fetch(`https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/me`
       ,{
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': 'Bearer TOKEN_STRING_HERE'
+          'Authorization': localStorage.getItem(`stAuth`)
         }});
         userHasAuthenticated(true);
        }
@@ -38,11 +41,12 @@ function App() {
     }
   
     setIsAuthenticating(false);
+
   }
 
 
   function handleLogout() {
- userHasAuthenticated(false);
+  userHasAuthenticated(false);  
   }
 
   return (

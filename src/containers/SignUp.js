@@ -30,7 +30,7 @@ export default function SignUp() {
        const { data } = await response.json()
        localStorage.setItem(`stAuth`, JSON.stringify(data.token))
        console.log(data.token)
-      alert("Logged in");
+      alert("Sign-Up compleate, Please Login");
     } catch (e) {
       alert(e.message );
     }
