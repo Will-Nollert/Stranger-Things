@@ -32,7 +32,7 @@ export default function SignUp() {
        console.log(data.token)
       alert("Logged in");
     } catch (e) {
-      alert(e.message);
+      alert(e.message );
     }
   }
 
