@@ -5,6 +5,7 @@ import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
+import { handleSubmit } from "./containers/Login"
 
 
 
@@ -22,15 +23,16 @@ function App() {
     onLoad();
   }, []);
   
-  async function onLoad() {
-    localStorage.getItem(`stAuth`)
+/*   async function onLoad() {
+    console.log(myToken)
+    const  myToken = localStorage.getItem(myToken)
 
     try {
        fetch(`https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/me`
       ,{
         headers: {
           'Content-Type': 'application/json',
-          'Authorization': localStorage.getItem(`stAuth`)
+          'Authorization': myToken
         }});
         userHasAuthenticated(true);
        }
@@ -42,7 +44,22 @@ function App() {
   
     setIsAuthenticating(false);
 
+  } */
+//I think I need the below functon but instread of await Auth.current sessio I need to await a authentatiocn functiopn from another file 
+
+async function onLoad() {
+  try {
+    await Auth.currentSession();
+    userHasAuthenticated(true);
   }
+  catch(e) {
+    if (e !== 'No current user') {
+      alert(e);
+    }
+  }
+
+  setIsAuthenticating(false);
+}
 
 
   function handleLogout() {
@@ -55,14 +72,17 @@ function App() {
         <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
           <LinkContainer to="/">
             <Navbar.Brand className="font-weight-bold text-muted">
-              Scratch
+              Scratch 
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
           <Navbar.Collapse className="justify-content-end">
             <Nav activeKey={window.location.pathname}>
               {isAuthenticated ? (
+                <>
                 <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                <span >Welcome, you are logged in</span>
+                </>
               ) : (
                 <>
                   <LinkContainer to="/signup">
