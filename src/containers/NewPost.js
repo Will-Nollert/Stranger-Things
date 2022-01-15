@@ -1,3 +1,8 @@
+// This file is a lifted copy of the signUp/Login page
+//I just wanted content to make sure my Route was hitting
+//will format post request and form body next
+// as the currently are set for registering a new user
+
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -43,7 +48,7 @@ export default function SignUp() {
     <div className="SignUp">
       <Form onSubmit={handleSubmit}>
         <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
+          <Form.Label>Post Title</Form.Label>
           <Form.Control
             autoFocus
             type="email"
@@ -52,7 +57,7 @@ export default function SignUp() {
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
-          <Form.Label>Password</Form.Label>
+          <Form.Label>Post Content</Form.Label>
           <Form.Control
             type="password"
             value={password}
