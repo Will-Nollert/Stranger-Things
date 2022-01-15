@@ -4,22 +4,24 @@ import Home from "./containers/Home";
 import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
-
-
+import NewPost from "./containers/NewPost";
 
 export default function Routes() {
   return (
     <Switch>
       <Route exact path="/">
         <Home />
-        </Route>
-        <Route exact path ="/Login">
-            <Login />
-        </Route>
-        <Route exact path="/Signup">
+      </Route>
+      <Route exact path="/Login">
+        <Login />
+      </Route>
+      <Route exact path="/Signup">
         <SignUp />
-        </Route>
-        <NotFound />
+      </Route>
+      <Route exact path="/NewPost">
+        <NewPost />
+      </Route>
+      <NotFound />
     </Switch>
   );
 }

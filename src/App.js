@@ -5,7 +5,6 @@ import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
-import { handleSubmit } from "./containers/Login";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -59,6 +58,9 @@ function App() {
             <Nav activeKey={window.location.pathname}>
               {isAuthenticated ? (
                 <>
+                  <LinkContainer to="/newpost">
+                    <Nav.Link>New post</Nav.Link>
+                  </LinkContainer>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                   <span>Welcome, you are logged in</span>
                 </>
