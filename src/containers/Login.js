@@ -9,7 +9,6 @@ export default function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const myToken = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
@@ -36,9 +35,10 @@ export default function Login() {
         }
       );
       const { data } = await response.json();
-      localStorage.setItem("stAuth", JSON.stringify(data.token));
+      console.log(data);
+      //localStorage.setItem(`stAuth`, JSON.stringify(data.token));
       alert("Logged in");
-      userHasAuthenticated(true);
+      //userHasAuthenticated(true);
     } catch (e) {
       alert(e.message);
     }

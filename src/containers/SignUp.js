@@ -13,26 +13,29 @@ export default function SignUp() {
 
   async function handleSubmit(event) {
     event.preventDefault();
-  
+
     try {
-     const response = await fetch(`https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/register`
-     ,{
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json'
-       },
-       body: JSON.stringify({
-         user: {
-           username: email,
-           password: password
-         }
-       })});
-       const { data } = await response.json()
-       localStorage.setItem(`stAuth`, JSON.stringify(data.token))
-       console.log(data.token)
+      const response = await fetch(
+        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/register`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: {
+              username: email,
+              password: password,
+            },
+          }),
+        }
+      );
+      const { data } = await response.json();
+      localStorage.setItem(`stAuth`, JSON.stringify(data.token));
+      // console.log(data.token)
       alert("Sign-Up compleate, Please Login");
     } catch (e) {
-      alert(e.message );
+      alert(e.message);
     }
   }
 

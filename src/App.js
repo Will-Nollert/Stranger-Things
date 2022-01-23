@@ -16,19 +16,7 @@ function App() {
   }, []);
 
   async function onLoad() {
-    const token = localStorage.getItem("stAuth");
-    console.log(token);
-
     try {
-      fetch(
-        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/me`,
-        {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${token}`,
-          },
-        }
-      );
       userHasAuthenticated(true);
     } catch (e) {
       if (e !== "No current user") {
@@ -38,7 +26,6 @@ function App() {
 
     setIsAuthenticating(false);
   }
-  //I think I need the below functon but instread of await Auth.current sessio I need to await a authentatiocn functiopn from another file
 
   function handleLogout() {
     userHasAuthenticated(false);
