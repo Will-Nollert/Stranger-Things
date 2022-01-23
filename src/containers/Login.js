@@ -35,10 +35,12 @@ export default function Login() {
         }
       );
       const { data } = await response.json();
-      //console.log(data);
+      console.log(JSON.stringify(data.token));
       localStorage.setItem(`stAuth`, JSON.stringify(data.token));
       alert("Logged in");
       userHasAuthenticated(true);
+      const token = localStorage.getItem("stAuth");
+      console.log(token);
     } catch (e) {
       alert(e.message);
     }

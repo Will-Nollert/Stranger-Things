@@ -12,6 +12,8 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const token = localStorage.getItem("stAuth");
+
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
@@ -21,24 +23,27 @@ export default function SignUp() {
 
     try {
       const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/register`,
+        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/posts`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
+            Authorization: token,
           },
           body: JSON.stringify({
-            user: {
-              username: email,
-              password: password,
+            poat: {
+              title: "My favorite stuffed animal",
+              description:
+                "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
+              price: "$480.00",
+              willDeliver: true,
             },
           }),
         }
       );
-      const { data } = await response.json();
-      localStorage.setItem(`stAuth`, JSON.stringify(data.token));
-      console.log(data.token);
-      alert("Sign-Up compleate, Please Login");
+      const { post } = await response.json();
+      console.log(post.title);
+      alert("Post Sent");
     } catch (e) {
       alert(e.message);
     }
