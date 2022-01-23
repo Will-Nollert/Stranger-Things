@@ -16,8 +16,8 @@ function App() {
   }, []);
 
   async function onLoad() {
-    console.log(myToken);
-    const myToken = localStorage.getItem(myToken);
+    const token = localStorage.getItem("stAuth");
+    console.log(token);
 
     try {
       fetch(
@@ -25,7 +25,7 @@ function App() {
         {
           headers: {
             "Content-Type": "application/json",
-            Authorization: myToken,
+            Authorization: `Bearer ${token}`,
           },
         }
       );
@@ -50,7 +50,7 @@ function App() {
         <Navbar collapseOnSelect bg="light" expand="md" className="mb-3">
           <LinkContainer to="/">
             <Navbar.Brand className="font-weight-bold text-muted">
-              Scratch
+              Stranger Things
             </Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle />
@@ -58,20 +58,21 @@ function App() {
             <Nav activeKey={window.location.pathname}>
               {isAuthenticated ? (
                 <>
-                  <LinkContainer to="/newpost">
-                    <Nav.Link>New post</Nav.Link>
-                  </LinkContainer>
-                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
-                  <span>Welcome, you are logged in</span>
-                </>
-              ) : (
-                <>
                   <LinkContainer to="/signup">
                     <Nav.Link>Signup</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/login">
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
+                </>
+              ) : (
+                <>
+                  <LinkContainer to="/newpost">
+                    {" "}
+                    <Nav.Link>New post</Nav.Link>{" "}
+                  </LinkContainer>{" "}
+                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>{" "}
+                  <span>Welcome, you are logged in</span>
                 </>
               )}
             </Nav>

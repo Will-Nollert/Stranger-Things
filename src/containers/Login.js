@@ -4,41 +4,43 @@ import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { useAppContext } from "../lib/contextLib";
 
-
 export default function Login() {
   const { userHasAuthenticated } = useAppContext();
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const myToken = useState("")
+  const myToken = useState("");
 
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
 
   async function handleSubmit(event) {
+    event.onload();
     event.preventDefault();
-  
+
     try {
-     const response = await fetch(`https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/login`
-     ,{
-       method: 'POST',
-       headers: {
-         'Content-Type': 'application/json'
-       },
-       body: JSON.stringify({
-         user: {
-           username: email,
-           password: password
-         }
-       })});
-       const { data } = await response.json()
-       localStorage.setItem(myToken, JSON.stringify(data.token))
-       console.log(data.token)
-       alert("Logged in");
-       userHasAuthenticated(true);
-      } catch (e) {
-      alert(e.message );
+      const response = await fetch(
+        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/login`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user: {
+              username: email,
+              password: password,
+            },
+          }),
+        }
+      );
+      const { data } = await response.json();
+      localStorage.setItem("stAuth", JSON.stringify(data.token));
+      alert("Logged in");
+      userHasAuthenticated(true);
+    } catch (e) {
+      alert(e.message);
     }
   }
 
