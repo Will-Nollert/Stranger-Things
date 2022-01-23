@@ -45,21 +45,20 @@ function App() {
             <Nav activeKey={window.location.pathname}>
               {isAuthenticated ? (
                 <>
+                  <LinkContainer to="/newpost">
+                    <Nav.Link>New post</Nav.Link>
+                  </LinkContainer>
+                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                  <span>Welcome, you are logged in</span>
+                </>
+              ) : (
+                <>
                   <LinkContainer to="/signup">
                     <Nav.Link>Signup</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/login">
                     <Nav.Link>Login</Nav.Link>
                   </LinkContainer>
-                </>
-              ) : (
-                <>
-                  <LinkContainer to="/newpost">
-                    {" "}
-                    <Nav.Link>New post</Nav.Link>{" "}
-                  </LinkContainer>{" "}
-                  <Nav.Link onClick={handleLogout}>Logout</Nav.Link>{" "}
-                  <span>Welcome, you are logged in</span>
                 </>
               )}
             </Nav>

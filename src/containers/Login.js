@@ -34,11 +34,11 @@ export default function Login() {
           }),
         }
       );
-      const data = await response.json();
-      console.log(data);
-      //localStorage.setItem(`stAuth`, JSON.stringify(data.token));
+      const { data } = await response.json();
+      //console.log(data);
+      localStorage.setItem(`stAuth`, JSON.stringify(data.token));
       alert("Logged in");
-      //userHasAuthenticated(true);
+      userHasAuthenticated(true);
     } catch (e) {
       alert(e.message);
     }
