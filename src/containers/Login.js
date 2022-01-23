@@ -15,7 +15,7 @@ export default function Login() {
   }
 
   async function handleSubmit(event) {
-    event.onload();
+    //event.onload();
     event.preventDefault();
 
     try {
@@ -34,7 +34,7 @@ export default function Login() {
           }),
         }
       );
-      const { data } = await response.json();
+      const data = await response.json();
       console.log(data);
       //localStorage.setItem(`stAuth`, JSON.stringify(data.token));
       alert("Logged in");
