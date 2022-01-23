@@ -5,6 +5,7 @@ import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
+import Login from "./containers/Login";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -17,14 +18,14 @@ function App() {
 
   async function onLoad() {
     try {
-      userHasAuthenticated(true);
+      //userHasAuthenticated(true);
     } catch (e) {
       if (e !== "No current user") {
         alert(e);
       }
     }
 
-    setIsAuthenticating(false);
+    //setIsAuthenticating(false);
   }
 
   function handleLogout() {
@@ -57,7 +58,7 @@ function App() {
                     <Nav.Link>Signup</Nav.Link>
                   </LinkContainer>
                   <LinkContainer to="/login">
-                    <Nav.Link>Login</Nav.Link>
+                    <Nav.Link onClick={Login}>Login</Nav.Link>
                   </LinkContainer>
                 </>
               )}
