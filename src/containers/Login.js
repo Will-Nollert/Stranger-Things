@@ -20,7 +20,7 @@ export default function Login() {
 
     try {
       const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/login`,
+        `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/users/login`,
         {
           method: "POST",
           headers: {
@@ -35,12 +35,12 @@ export default function Login() {
         }
       );
       const { data } = await response.json();
-      console.log(JSON.stringify(data.token));
-      localStorage.setItem(`stAuth`, JSON.stringify(data.token));
+      const jotToken = JSON.stringify(data.token);
+      localStorage.setItem(`stAuth`, jotToken);
       alert("Logged in");
       userHasAuthenticated(true);
-      const token = localStorage.getItem("stAuth");
-      console.log(token);
+      console.log(localStorage);
+      //console.log(jotToken);
     } catch (e) {
       alert(e.message);
     }

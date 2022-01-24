@@ -16,7 +16,7 @@ export default function SignUp() {
 
     try {
       const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/register`,
+        `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/users/register`,
         {
           method: "POST",
           headers: {

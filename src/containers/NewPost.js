@@ -9,21 +9,27 @@ import Button from "react-bootstrap/Button";
 import "./SignUp.css";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [price, setPrice] = useState("");
 
-  const token = localStorage.getItem("stAuth");
+  //const token = localStorage.getItem("stAuth");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return description.length > 0 && title.length > 0;
   }
 
   async function handleSubmit(event) {
     event.preventDefault();
+    //const token = localStorage.getItem("stAuth");
+    //console.log(token); //this is hit
 
     try {
+      const token = localStorage.getItem("stAuth");
+      console.log(token); //this is hit
+
       const response = await fetch(
-        `https://strangers-things.herokuapp.com/api/2004-UNF-HY-WEB-PT/users/posts`,
+        `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/posts`,
         {
           method: "POST",
           headers: {
@@ -31,19 +37,24 @@ export default function SignUp() {
             Authorization: token,
           },
           body: JSON.stringify({
-            poat: {
-              title: "My favorite stuffed animal",
-              description:
-                "This is a pooh doll from 1973. It has been carefully taken care of since I first got it.",
-              price: "$480.00",
-              willDeliver: true,
+            post: {
+              title: title,
+              description: description,
+              price: price,
+              //willDeliver: true,
             },
           }),
         }
       );
-      const { post } = await response.json();
-      console.log(post.title);
-      alert("Post Sent");
+      const data = await response.json();
+      const readableResponse = JSON.stringify(data.error);
+      console.log(readableResponse.post);
+
+      if (readableResponse.post) {
+        alert("Post Sent");
+      } else {
+        alert("Error sending post");
+      }
     } catch (e) {
       alert(e.message);
     }
@@ -52,21 +63,29 @@ export default function SignUp() {
   return (
     <div className="SignUp">
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
+        <Form.Group size="lg">
           <Form.Label>Post Title</Form.Label>
           <Form.Control
             autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
           />
         </Form.Group>
-        <Form.Group size="lg" controlId="password">
-          <Form.Label>Post Content</Form.Label>
+        <Form.Group size="lg">
+          <Form.Label>Post description</Form.Label>
           <Form.Control
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            type="description"
+            value={description}
+            onChange={(e) => setDescription(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg">
+          <Form.Label>Post price</Form.Label>
+          <Form.Control
+            type="price"
+            value={price}
+            onChange={(e) => setPrice(e.target.value)}
           />
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
