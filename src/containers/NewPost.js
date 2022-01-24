@@ -26,15 +26,19 @@ export default function SignUp() {
 
     try {
       const token = localStorage.getItem("stAuth");
-      console.log(token); //this is hit
+      const fixedToken = token.replace(/^"(.*)"$/, "$1");
 
+      console.log("Bearer " + fixedToken); //this is hit
+      //at this point I can get tihs post request working in postman but get
+      // 401 unAuth error when I try and use my localhost bc my token is malformed
+      // I can hardcore the token and then it works but when I try bearer + token it fails
       const response = await fetch(
         `https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/posts`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: token,
+            Authorization: "Bearer " + fixedToken,
           },
           body: JSON.stringify({
             post: {
@@ -47,8 +51,8 @@ export default function SignUp() {
         }
       );
       const data = await response.json();
-      const readableResponse = JSON.stringify(data.error);
-      console.log(readableResponse.post);
+      const readableResponse = JSON.stringify(data);
+      console.log({ readableResponse });
 
       if (readableResponse.post) {
         alert("Post Sent");
