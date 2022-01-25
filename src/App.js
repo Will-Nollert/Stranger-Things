@@ -6,6 +6,7 @@ import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
 import Login from "./containers/Login";
+import UserProfile from "./containers/UserProfile";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -47,7 +48,10 @@ function App() {
               {isAuthenticated ? (
                 <>
                   <LinkContainer to="/newpost">
-                    <Nav.Link>New post</Nav.Link>
+                    <Nav.Link>New Post</Nav.Link>
+                  </LinkContainer>
+                  <LinkContainer to="/UserProfile">
+                    <Nav.Link>User Profile</Nav.Link>
                   </LinkContainer>
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                   <span>Welcome, you are logged in</span>

@@ -5,6 +5,7 @@ import NotFound from "./containers/NotFound";
 import Login from "./containers/Login";
 import SignUp from "./containers/SignUp";
 import NewPost from "./containers/NewPost";
+import UserProfile from "./containers/UserProfile";
 
 export default function Routes() {
   return (
@@ -20,6 +21,9 @@ export default function Routes() {
       </Route>
       <Route exact path="/NewPost">
         <NewPost />
+      </Route>
+      <Route exact path="/UserProfile">
+        <UserProfile />
       </Route>
       <NotFound />
     </Switch>
