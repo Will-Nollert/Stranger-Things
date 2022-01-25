@@ -1,24 +1,25 @@
 import React from "react";
 
-export const PostCards = ({ posts }) => {
+const UserPostCard = ({ userPosts }) => {
   return (
     <div id="postCards">
       <h2 className="postCardElements" id="postCardTitle">
-        {posts.title}
+        {userPosts.title}
       </h2>
       <hr></hr>
-      <div className="postCardElements">{posts.description}</div>
+      <div className="postCardElements">{userPosts.description}</div>
       <div className="postCardElements" id="postCardPrice">
-        <b>Price:</b> {posts.price}
+        <b>Price:</b> {userPosts.price}
       </div>
       <div className="postCardElements" id="postCardSeller">
         <b>Seller:</b>
       </div>
       <div className="postCardElements" id="postCardLocation">
         <b>Location:</b>
-        {posts.location}
+        {userPosts.location}
       </div>
     </div>
   );
 };
-export default PostCards;
+
+export default UserPostCard;

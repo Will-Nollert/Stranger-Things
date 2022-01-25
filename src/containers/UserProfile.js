@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import UserPostCard from "./UserPostCard";
 
 const UserProfile = () => {
   const [userPosts, setUserPosts] = useState([]);
@@ -22,12 +23,13 @@ const UserProfile = () => {
   useEffect(() => {
     fetchUserPosts(URL).then((res) => setUserPosts([...res.data.posts]));
   }, []);
-  console.log(userPosts);
+  //console.log(userPosts);
 
   return (
     <div>
       {userPosts.map((userPosts) => {
         console.log(userPosts);
+        return <UserPostCard userPosts={userPosts} />;
       })}
     </div>
   );
