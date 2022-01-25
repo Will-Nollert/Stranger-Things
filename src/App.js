@@ -6,7 +6,6 @@ import Nav from "react-bootstrap/Nav";
 import { LinkContainer } from "react-router-bootstrap";
 import { AppContext } from "./lib/contextLib";
 import Login from "./containers/Login";
-import UserProfile from "./containers/UserProfile";
 
 function App() {
   const [isAuthenticated, userHasAuthenticated] = useState(false);
@@ -14,10 +13,10 @@ function App() {
 
   useEffect(() => {
     setIsAuthenticating(false);
-    onLoad();
+    //onLoad();
   }, []);
 
-  async function onLoad() {
+  /*   async function onLoad() {
     try {
       //userHasAuthenticated(true);
     } catch (e) {
@@ -27,7 +26,7 @@ function App() {
     }
 
     //setIsAuthenticating(false);
-  }
+  } */
 
   function handleLogout() {
     userHasAuthenticated(false);

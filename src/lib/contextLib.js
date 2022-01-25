@@ -3,6 +3,6 @@ import { useContext, createContext } from "react";
 export const AppContext = createContext(null);
 
 export function useAppContext() {
-  localStorage.clear();
+  //localStorage.clear();
   return useContext(AppContext);
 }
