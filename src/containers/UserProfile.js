@@ -28,7 +28,7 @@ const UserProfile = () => {
   return (
     <div>
       {userPosts.map((userPosts) => {
-        console.log(userPosts);
+        //console.log(userPosts);
         return <UserPostCard userPosts={userPosts} />;
       })}
     </div>

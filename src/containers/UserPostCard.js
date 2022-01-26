@@ -11,7 +11,27 @@ addtioanlly I need to chage the way I display a users
 posts so that way if "isActive" is set to false they will
 not display or at least be marked down in red*/
   function deletePost(postId) {
+    console.log(userPosts._id);
+
     try {
+      const token = localStorage.getItem("stAuth");
+      const fixedToken = token.replace(/^"(.*)"$/, "$1");
+
+      fetch(
+        "https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/posts/" +
+          userPosts._id,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + fixedToken,
+          },
+        }
+      )
+        .then((response) => response.json())
+        .then((result) => {
+          console.log(result);
+        });
     } catch (error) {
       alert(error.message);
     }
@@ -36,7 +56,7 @@ not display or at least be marked down in red*/
       </div>
       <button
         id="deleteBtn"
-        onclick={deletePost}
+        onClick={deletePost}
         className="postCardElements"
         type="button"
       >
