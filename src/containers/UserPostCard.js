@@ -30,7 +30,7 @@ const UserPostCard = ({ filteredPosts }) => {
       alert(error.message);
     }
   }
-
+  console.log(filteredPosts);
   return (
     <div id="postCards">
       <h2 className="postCardElements" id="postCardTitle">
@@ -42,7 +42,7 @@ const UserPostCard = ({ filteredPosts }) => {
         <b>Price:</b> {filteredPosts.price}
       </div>
       <div className="postCardElements" id="postCardSeller">
-        <b>Seller:</b> {filteredPosts.author}
+        <b>Seller:</b> {filteredPosts.author.username}
       </div>
       <div className="postCardElements" id="postCardLocation">
         <b>Location:</b>

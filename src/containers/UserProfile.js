@@ -25,7 +25,7 @@ const UserProfile = () => {
     fetchUserPosts(URL).then((res) => setUserPosts([...res.data.posts]));
   }, []);
 
-  console.log(userPosts);
+  //console.log(userPosts);
 
   /* This helper function allows for User Profile 
   to only show users posts that are "Active"*/
@@ -50,7 +50,7 @@ const UserProfile = () => {
   return (
     <div>
       {filteredPosts.map((posts) => {
-        console.log(posts);
+        //console.log(posts);
         return <UserPostCard filteredPosts={posts} />;
       })}
     </div>

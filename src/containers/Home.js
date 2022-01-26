@@ -17,7 +17,7 @@ const Home = () => {
     fetchPosts(URL).then((res) => setPosts([...res.data.posts]));
   }, []);
 
-  //console.log(posts);
+  console.log(posts);
 
   return (
     <div className="Home">

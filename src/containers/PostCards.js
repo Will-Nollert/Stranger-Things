@@ -1,6 +1,10 @@
 import React from "react";
 
 export const PostCards = ({ posts }) => {
+  //i need to destrucre postautore objc into a new var and then put that in where seller post.price is right now
+  const postAuthor = posts.author.username;
+  console.log(postAuthor);
+
   return (
     <div id="postCards">
       <h2 className="postCardElements" id="postCardTitle">
@@ -13,6 +17,7 @@ export const PostCards = ({ posts }) => {
       </div>
       <div className="postCardElements" id="postCardSeller">
         <b>Seller:</b>
+        {postAuthor}
       </div>
       <div className="postCardElements" id="postCardLocation">
         <b>Location:</b>
