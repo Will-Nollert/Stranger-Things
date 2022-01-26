@@ -7,11 +7,11 @@ import { useAppContext } from "../lib/contextLib";
 export default function Login() {
   const { userHasAuthenticated } = useAppContext();
 
-  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return text.length > 0 && password.length > 0;
   }
 
   async function handleSubmit(event) {
@@ -28,7 +28,7 @@ export default function Login() {
           },
           body: JSON.stringify({
             user: {
-              username: email,
+              username: text,
               password: password,
             },
           }),
@@ -49,13 +49,13 @@ export default function Login() {
   return (
     <div className="Login">
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
+        <Form.Group size="lg" controlId="text">
+          <Form.Label>Text</Form.Label>
           <Form.Control
             autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">

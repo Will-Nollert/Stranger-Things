@@ -8,7 +8,12 @@ body {
   font-family: "Open Sans", sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: "PT Serif", serif;
 }
 /*tweak the styles of the form fields so that the mobile browser does not zoom in on them on focus
@@ -18,27 +23,24 @@ textarea.form-control,
 input.form-control {
   font-size: 1rem;
 }
-input[type=file] {
+input[type="file"] {
   width: 100%;
 }
 
-
 #postCards {
-  margin: .5em;
-  padding: .25em;
+  margin: 0.5em;
+  padding: 0.25em;
   margin-right: 50%;
   margin-bottom: 2em;
   border: 1px solid lightgray;
 }
 
-.postCardElements{
+.postCardElements {
   text-align: left;
-  margin-left: .5em;
+  margin-left: 0.5em;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
-

@@ -4,11 +4,11 @@ import Button from "react-bootstrap/Button";
 import "./SignUp.css";
 
 export default function SignUp() {
-  const [email, setEmail] = useState("");
+  const [text, setText] = useState("");
   const [password, setPassword] = useState("");
 
   function validateForm() {
-    return email.length > 0 && password.length > 0;
+    return text.length > 0 && password.length > 0;
   }
 
   async function handleSubmit(event) {
@@ -24,7 +24,7 @@ export default function SignUp() {
           },
           body: JSON.stringify({
             user: {
-              username: email,
+              username: text,
               password: password,
             },
           }),
@@ -42,13 +42,13 @@ export default function SignUp() {
   return (
     <div className="SignUp">
       <Form onSubmit={handleSubmit}>
-        <Form.Group size="lg" controlId="email">
-          <Form.Label>Email</Form.Label>
+        <Form.Group size="lg" controlId="text">
+          <Form.Label>Text</Form.Label>
           <Form.Control
             autoFocus
-            type="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
+            type="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
           />
         </Form.Group>
         <Form.Group size="lg" controlId="password">
