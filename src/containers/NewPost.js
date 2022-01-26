@@ -1,8 +1,3 @@
-// This file is a lifted copy of the signUp/Login page
-//I just wanted content to make sure my Route was hitting
-//will format post request and form body next
-// as the currently are set for registering a new user
-
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
@@ -49,12 +44,10 @@ export default function SignUp() {
       );
       const data = await response.json();
       const readableResponse = JSON.stringify(data);
-      console.log({ readableResponse });
+      //console.log({ readableResponse });
 
-      if (readableResponse.post) {
+      if (readableResponse) {
         alert("Post Sent");
-      } else {
-        alert("Error sending post");
       }
     } catch (e) {
       alert(e.message);
