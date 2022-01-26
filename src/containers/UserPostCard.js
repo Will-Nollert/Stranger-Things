@@ -1,17 +1,8 @@
 import React from "react";
 
 const UserPostCard = ({ userPosts }) => {
-  /* the try catch block is set up here so that 
-i can add teh delete API call here
-I will need a way to alter the URL string so that way
-a unique call is made to each post that is being deleted 
-and not deleting only one post or all the users posts
-
-addtioanlly I need to chage the way I display a users 
-posts so that way if "isActive" is set to false they will
-not display or at least be marked down in red*/
-  function deletePost(postId) {
-    console.log(userPosts._id);
+  function deletePost() {
+    //console.log(userPosts._id);
 
     try {
       const token = localStorage.getItem("stAuth");
@@ -48,7 +39,7 @@ not display or at least be marked down in red*/
         <b>Price:</b> {userPosts.price}
       </div>
       <div className="postCardElements" id="postCardSeller">
-        <b>Seller:</b>
+        <b>Seller:</b> {userPosts.author}
       </div>
       <div className="postCardElements" id="postCardLocation">
         <b>Location:</b>

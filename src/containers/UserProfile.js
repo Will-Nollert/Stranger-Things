@@ -23,7 +23,7 @@ const UserProfile = () => {
   useEffect(() => {
     fetchUserPosts(URL).then((res) => setUserPosts([...res.data.posts]));
   }, []);
-  //console.log(userPosts);
+  console.log(userPosts);
 
   return (
     <div>
