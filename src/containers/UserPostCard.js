@@ -2,8 +2,6 @@ import React from "react";
 
 const UserPostCard = ({ userPosts }) => {
   function deletePost() {
-    //console.log(userPosts._id);
-
     try {
       const token = localStorage.getItem("stAuth");
       const fixedToken = token.replace(/^"(.*)"$/, "$1");
@@ -23,10 +21,20 @@ const UserPostCard = ({ userPosts }) => {
         .then((result) => {
           console.log(result);
         });
+      console.log(userPosts);
     } catch (error) {
       alert(error.message);
     }
   }
+
+  /*  for (let index = 0; index < userPosts.length; index++) {
+    const element = userPosts[index];
+    if (!element.active) {
+      console.log("HI");
+    } else {
+      index++;
+    }
+  } */
 
   return (
     <div id="postCards">
