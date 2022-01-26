@@ -1,5 +1,4 @@
 import React from "react";
-import UserProfile from "./UserProfile";
 
 const UserPostCard = ({ filteredPosts }) => {
   function deletePost() {
@@ -21,7 +20,6 @@ const UserPostCard = ({ filteredPosts }) => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
-          UserProfile();
         });
       console.log(filteredPosts);
     } catch (error) {

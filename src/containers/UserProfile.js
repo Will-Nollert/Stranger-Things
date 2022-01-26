@@ -25,9 +25,9 @@ const UserProfile = () => {
     fetchUserPosts(URL).then((res) => setUserPosts([...res.data.posts]));
   }, []);
 
-  /* 
-  so right now line 34 is logging all of the post the User has made
-  and then line 41 is loggin the new array which has only the active posts  */
+  console.log(userPosts);
+
+  /* filterpost arreay is only showing one element */
   let filteredPosts = [];
   function filterActivePosts() {
     for (let i = 0; i < userPosts.length; i++) {
@@ -38,26 +38,21 @@ const UserProfile = () => {
         i++;
       }
     }
-    console.log(filteredPosts);
+    // console.log(filteredPosts);
   }
 
   console.log(filterActivePosts(filteredPosts));
+  console.log(filteredPosts);
 
   //console.log(userPosts[0].active);
 
   return (
     <div>
-      {filteredPosts.map((post) => {
-        console.log(post);
-        return <UserPostCard filteredPosts={post} />;
+      {filteredPosts.map((posts) => {
+        console.log(posts);
+        return <UserPostCard filteredPosts={posts} />;
       })}
     </div>
-    /*     <div>
-      {userPosts.map((userPosts) => {
-        //console.log(userPosts);
-        return <UserPostCard userPosts={userPosts} />;
-      })}
-    </div> */
   );
 };
 
