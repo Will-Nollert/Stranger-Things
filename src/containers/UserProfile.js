@@ -27,12 +27,13 @@ const UserProfile = () => {
 
   console.log(userPosts);
 
-  /* filterpost arreay is only showing one element */
+  /* This helper function allows for User Profile 
+  to only show users posts that are "Active"*/
   let filteredPosts = [];
   function filterActivePosts() {
     for (let i = 0; i < userPosts.length; i++) {
       const element = userPosts[i];
-      console.log(element);
+      //console.log(element);
       if (element.active === true) {
         filteredPosts.push(element);
         i++;
@@ -42,7 +43,7 @@ const UserProfile = () => {
   }
 
   console.log(filterActivePosts(filteredPosts));
-  console.log(filteredPosts);
+  //console.log(filteredPosts);
 
   //console.log(userPosts[0].active);
 

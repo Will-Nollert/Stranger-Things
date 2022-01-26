@@ -7,6 +7,10 @@ const UserPostCard = ({ filteredPosts }) => {
       const fixedToken = token.replace(/^"(.*)"$/, "$1");
 
       fetch(
+        /*         URL end point needs specefic post ID to delete individual posts
+          I could con-cat the string and save that as URL string but this
+          seemed to work the quicket for me
+ */
         "https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/posts/" +
           filteredPosts._id,
         {
@@ -19,22 +23,13 @@ const UserPostCard = ({ filteredPosts }) => {
       )
         .then((response) => response.json())
         .then((result) => {
-          console.log(result);
+          //console.log(result);
         });
-      console.log(filteredPosts);
+      //console.log(filteredPosts);
     } catch (error) {
       alert(error.message);
     }
   }
-
-  /*  for (let index = 0; index < userPosts.length; index++) {
-    const element = userPosts[index];
-    if (!element.active) {
-      console.log("HI");
-    } else {
-      index++;
-    }
-  } */
 
   return (
     <div id="postCards">

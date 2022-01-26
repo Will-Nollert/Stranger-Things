@@ -39,7 +39,7 @@ export default function Login() {
       localStorage.setItem(`stAuth`, jotToken);
       alert("Logged in");
       userHasAuthenticated(true);
-      console.log(localStorage);
+      //console.log(localStorage);
       //console.log(jotToken);
     } catch (e) {
       alert(e.message);
