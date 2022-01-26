@@ -47,11 +47,17 @@ const UserProfile = () => {
 
   return (
     <div>
+      {filteredPosts.map((post) => {
+        console.log(post);
+        return <UserPostCard filteredPosts={post} />;
+      })}
+    </div>
+    /*     <div>
       {userPosts.map((userPosts) => {
         //console.log(userPosts);
         return <UserPostCard userPosts={userPosts} />;
       })}
-    </div>
+    </div> */
   );
 };
 

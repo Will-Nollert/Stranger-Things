@@ -1,6 +1,7 @@
 import React from "react";
+import UserProfile from "./UserProfile";
 
-const UserPostCard = ({ userPosts }) => {
+const UserPostCard = ({ filteredPosts }) => {
   function deletePost() {
     try {
       const token = localStorage.getItem("stAuth");
@@ -8,7 +9,7 @@ const UserPostCard = ({ userPosts }) => {
 
       fetch(
         "https://strangers-things.herokuapp.com/api/2109-OKU-RM-WEB-PT/posts/" +
-          userPosts._id,
+          filteredPosts._id,
         {
           method: "DELETE",
           headers: {
@@ -20,8 +21,9 @@ const UserPostCard = ({ userPosts }) => {
         .then((response) => response.json())
         .then((result) => {
           console.log(result);
+          UserProfile();
         });
-      console.log(userPosts);
+      console.log(filteredPosts);
     } catch (error) {
       alert(error.message);
     }
@@ -39,19 +41,19 @@ const UserPostCard = ({ userPosts }) => {
   return (
     <div id="postCards">
       <h2 className="postCardElements" id="postCardTitle">
-        {userPosts.title}
+        {filteredPosts.title}
       </h2>
       <hr></hr>
-      <div className="postCardElements">{userPosts.description}</div>
+      <div className="postCardElements">{filteredPosts.description}</div>
       <div className="postCardElements" id="postCardPrice">
-        <b>Price:</b> {userPosts.price}
+        <b>Price:</b> {filteredPosts.price}
       </div>
       <div className="postCardElements" id="postCardSeller">
-        <b>Seller:</b> {userPosts.author}
+        <b>Seller:</b> {filteredPosts.author}
       </div>
       <div className="postCardElements" id="postCardLocation">
         <b>Location:</b>
-        {userPosts.location}
+        {filteredPosts.location}
       </div>
       <button
         id="deleteBtn"
